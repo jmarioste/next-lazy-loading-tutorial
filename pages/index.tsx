@@ -1,15 +1,23 @@
 import { NextPage } from "next";
-import { useSession } from "next-auth/react";
-import React from "react";
+import React, { useState } from "react";
+// 1. Import the dynamic module
+import dynamic from "next/dynamic";
+// 2. Import the component using dynamic module
+const ComponentA = dynamic(() => import("components/ComponentA"));
 
 const HomePage: NextPage = () => {
+  const [shown, setShown] = useState(false);
+
   return (
     <div className="container">
-      <div className="grid place-content-center min-h-screen">
-        <div className="flex flex-col items-center gap-4">
-          <h1 className="text-4xl my-8">Welcome to NextJS DaisyUI Starter</h1>
-        </div>
-      </div>
+      {/* 3. Implement click handle to toggle the state */}
+      <button className="btn btn-primary" onClick={() => setShown(true)}>
+        Load Component
+      </button>
+
+      {/* 4. Add a condition to render the component */}
+      {/*NextJS won't load ComponentA if shown is false */}
+      {shown && <ComponentA />}
     </div>
   );
 };

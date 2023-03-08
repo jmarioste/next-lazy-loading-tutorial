@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.26.5",
     "daisyui": "^2.42.1",
     "next": "13.0.5",
     "next-auth": "^4.17.0",
